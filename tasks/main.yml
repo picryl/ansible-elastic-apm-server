@@ -1,22 +1,18 @@
 ---
-- name: Install prerequisites
-  apt:
-    name: "{{ apm_server_prereq }}"
-    state: present
+- name: Install common dependencies
+  package:
+    name:
+      - wget
 
-- name: Add the Elastic APT repository key
-  apt_key:
-    url: https://artifacts.elastic.co/GPG-KEY-elasticsearch
-    state: present
+- include: setup-RedHat.yml
+  when: ansible_os_family == 'RedHat'
 
-- name: Add the Elastic APT repository
-  apt_repository:
-    repo: "{{ apm_server_elastic_repo_url }}"
-    state: present
+- include: setup-Debian.yml
+  when: ansible_os_family == 'Debian'
 
 - name: Install APM Server
-  apt:
-    name: "apm-server={{ apm_server_version }}"
+  package:
+    name: "apm-server"
     state: present
 
 - name: Deploy service configuration

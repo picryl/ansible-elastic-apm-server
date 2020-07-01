@@ -1,0 +1,8 @@
+[elasticsearch-apm-{{ apm_server_major_version_abbreviated }}]
+name=Kibana repository for {{ apm_server_major_version_abbreviated }} packages
+baseurl=https://artifacts.elastic.co/packages/{{ apm_server_major_version_abbreviated }}/yum
+gpgcheck=1
+gpgkey=https://artifacts.elastic.co/GPG-KEY-elasticsearch
+enabled=1
+autorefresh=1
+type=rpm-md

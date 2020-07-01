@@ -3,7 +3,7 @@
 apm_server_prereq:
   - apt-transport-https
 
-apm_server_version: 6.4.0
+apm_server_version: 7.8.0
 
 # The apt repo URL pegs minor versions (e.g. 6.x) to avoid unexpected upgrades
 apm_server_major_version_abbreviated: "{{ apm_server_version | regex_replace('^(\\d).*$', '\\1.x') }}"
